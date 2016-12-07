@@ -1,0 +1,16 @@
+#!/bin/bash
+mkdir -p data/m0
+
+DNDSTOOLSPATH=$HOME/work/dndstools
+
+tail -n +2 data/m0.txt | \
+       	while IFS=, read i k w ncodons nseq tlen
+do
+	fn=$(printf %04d $i)
+	echo $fn
+	ot=data/m0/$fn.onwk
+	t=${ot%.*}.nwk
+	$DNDSTOOLSPATH/gen_tree.py --ntax $nseq --birth-rate 0.3 --death-rate 0.1 > $ot
+	$DNDSTOOLSPATH/scale_tree.py $ot $tlen $t
+	$DNDSTOOLSPATH/label_internal_nodes.py --in-place $t
+done
