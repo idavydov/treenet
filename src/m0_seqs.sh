@@ -4,9 +4,9 @@ mkdir -p data/m0
 COSIMPATH=$HOME/work/cosim
 
 tail -n +2 data/m0.txt | \
-       	while IFS=, read i k w ncodons nseq tlen
+       	while IFS=, read ac k w ncodons nseq tlen
 do
-	fn=$(printf %04d $i)
+	fn=$ac
 	echo $fn
 	t=data/m0/$fn.nwk
 	f=${t%.*}.fst

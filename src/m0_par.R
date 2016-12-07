@@ -6,7 +6,8 @@ m0 <- data.frame(
   w=rexp(N,1),
   ncodons=sample(100:1000,N,replace=T),
   nseq=sample(8:15,N,replace=T),
-  tlen=rgamma(N,2,1/2)
+  tlen=rgamma(N,2,1/2),
+  row.names=sprintf('d%04d', 1:N)
 )
 
 write.table(m0, file='data/m0.txt', sep=',', quote = F)

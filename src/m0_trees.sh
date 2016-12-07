@@ -4,9 +4,9 @@ mkdir -p data/m0
 DNDSTOOLSPATH=$HOME/work/dndstools
 
 tail -n +2 data/m0.txt | \
-       	while IFS=, read i k w ncodons nseq tlen
+       	while IFS=, read ac  k w ncodons nseq tlen
 do
-	fn=$(printf %04d $i)
+	fn=$ac
 	echo $fn
 	ot=data/m0/$fn.onwk
 	t=${ot%.*}.nwk
