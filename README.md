@@ -17,7 +17,8 @@ import numpy as np
 data = np.load('data/m0.npy')[()]
 ```
 
-Dictionary describing a single dataset looks as follows:
+This is dictionary where keys are dataset IDs, and values are
+dictionaries. Dictionary describing a single dataset looks as follows:
 
 ```python
 {
@@ -27,10 +28,13 @@ Dictionary describing a single dataset looks as follows:
     'k': '2.5', # kappa, ts/tv ratio, simulation parameter
     'ncodons': '110', # alignment length in codons
     'bifurcations': [ # list of bifurcations, post-ordered
-        'level': 2, # node depth, 0 is root
-        'dist': 0.18, # distance between the two nodes (in codon substitions)
-        'input': np.array, # child sequences, shape (2, ncodons*3)
-        'output': np.array, # parent sequence, shape (ncodons*3,)
+        {
+            'level': 2, # node depth, 0 is root
+            'dist': 0.18, # distance between the two nodes (in codon substitions)
+            'input': np.array, # child sequences, shape (2, ncodons*3)
+            'output': np.array, # parent sequence, shape (ncodons*3,)
+        },
+        ...
     ],
 }
 ```
